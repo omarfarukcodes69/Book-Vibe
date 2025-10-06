@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router";
 import Root from "../Pages/Root/root";
 import ErrorPages from "../Pages/ErrorPages/ErrorPages";
 import Home from "../Pages/Home/Home";
-import About from "../Pages/About/About";
 import BookDetails from "../Pages/BookDetails/BookDetails";
 import ReadList from "../Pages/ReadList/ReadList";
 import ListedBooks from "../Pages/ListedBooks/ListedBooks";

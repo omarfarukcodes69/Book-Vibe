@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import { addToStoredDB } from "../../Utility/addToDB";
+import { addToStoredWishListDB } from "../../Utility/addToWhishDB";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -24,6 +25,9 @@ const BookDetails = () => {
   const handleReadBook = (id) => {
     addToStoredDB(id);
   };
+  const handleWhishlist = (id)=>{
+    addToStoredWishListDB(id);
+  }
   return (
     <div className="md:flex flex-col justify-between items-center gap-10 md:card-side bg-base-100 shadow-sm w-[90%] mx-auto my-14 p-5   ">
       <figure className="bg-[#f3f3f3] rounded-md md:w-1/2 p-15">
@@ -77,7 +81,7 @@ const BookDetails = () => {
           <button onClick={()=> handleReadBook(id)} className="btn text-lg p-6 border-1 border-gray-300">
             Read
           </button>
-          <button className="btn  text-lg p-6 text-white bg-[#50B1C9] ">
+          <button  onClick={()=> handleWhishlist(id)} className="btn  text-lg p-6 text-white bg-[#50B1C9] ">
             Wishlist
           </button>
         </div>
