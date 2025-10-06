@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoredDB } from "../../Utility/addToDB";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -19,16 +20,16 @@ const BookDetails = () => {
     bookName,
   } = BookData;
   // console.log(BookId,BookData)
+
+  const handleReadBook = (id) => {
+    addToStoredDB(id);
+  };
   return (
-    <div className="card md:card-side bg-base-100 shadow-sm w-[80%] mx-auto my-14 p-4   ">
-      <figure className="bg-[#f3f3f3] rounded-md">
-        <img
-          className=" p-7 drop-shadow-xl"
-          src={image}
-          alt="Shoes"
-        />
+    <div className="md:flex flex-col justify-between items-center gap-10 md:card-side bg-base-100 shadow-sm w-[90%] mx-auto my-14 p-5   ">
+      <figure className="bg-[#f3f3f3] rounded-md md:w-1/2 p-15">
+        <img className=" rounded drop-shadow-xl" src={image} alt="Shoes" />
       </figure>
-      <div className="card-body space-y-3 ">
+      <div className=" space-y-3 md:w-1/2">
         <h2 className="card-title text-2xl font-semibold ">{bookName}</h2>
 
         <h3 className="text-lg border-b-1 border-gray-300 rounded-xl pb-5 ">
@@ -60,7 +61,7 @@ const BookDetails = () => {
         <div className="  flex gap-10 my-5">
           <aside className=" text-lg text-gray-500 space-y-2">
             <p>Number of Pages:</p>
-            <p >Publisher:</p>
+            <p>Publisher:</p>
             <p>Year of Publishing: </p>
             <p>Rating:</p>
           </aside>
@@ -73,8 +74,12 @@ const BookDetails = () => {
         </div>
 
         <div className="card-actions  ">
-          <button className="btn text-lg p-6 border-1 border-gray-300">Read</button>
-          <button className="btn  text-lg p-6 text-white bg-[#50B1C9] ">Wishlist</button>
+          <button onClick={()=> handleReadBook(id)} className="btn text-lg p-6 border-1 border-gray-300">
+            Read
+          </button>
+          <button className="btn  text-lg p-6 text-white bg-[#50B1C9] ">
+            Wishlist
+          </button>
         </div>
       </div>
     </div>
